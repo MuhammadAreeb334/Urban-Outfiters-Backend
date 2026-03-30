@@ -1,8 +1,8 @@
 import express from "express";
+import { getCategories } from "../controllers/categoryController.js";
 
 const categoryRouter = express.Router();
 
-categoryRouter.get("/", (req, res) => res.send("Get all category"));
-categoryRouter.get("/:slug", (req, res) => res.send("Get category by Slug"));
+categoryRouter.get("/", getCategories);
 
 export default categoryRouter;

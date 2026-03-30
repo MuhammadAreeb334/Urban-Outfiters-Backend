@@ -7,17 +7,28 @@ import categoryRouter from "./routes/categoryRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import cartRouter from "./routes/cartRoutes.js";
 import orderRouter from "./routes/orderRoutes.js";
+import Product from "./models/Product.js";
+import Category from "./models/Category.js";
+import Cart from "./models/Cart.js";
+import Order from "./models/Order.js";
+import User from "./models/User.js";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("api/products", productRouter);
-app.use("api/categories", categoryRouter);
-app.use("api/user", userRouter);
-app.use("api/cart", cartRouter);
-app.use("api/order", orderRouter);
+app.use("/products", productRouter);
+app.use("/categories", categoryRouter);
+app.use("/user", userRouter);
+app.use("/cart", cartRouter);
+app.use("/order", orderRouter);
+app.use("/uploads", express.static(path.join(__dirname, "upload")));
 
 app.get("/", (req, res) => {
   res.status(200).json({
