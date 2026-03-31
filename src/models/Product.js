@@ -3,9 +3,12 @@ import mongoose from "mongoose";
 const colorSchema = new mongoose.Schema({
   name: { type: String, required: true },
   hex: { type: String, required: true },
-  mainImage: { type: String, required: true },
-  hoverImage: { type: String, required: true },
-  allImages: [String],
+  key: { type: String, required: true }, 
+  images: {
+    main: { type: String, required: true },
+    hover: { type: String, required: true },
+    gallery: [String],
+  },
 });
 
 const productSchema = new mongoose.Schema(
@@ -24,7 +27,7 @@ const productSchema = new mongoose.Schema(
     tags: {
       isNewArrival: { type: Boolean, default: false },
       isTopPick: { type: Boolean, default: false },
-      collectionName: { type: String, default: false },
+      collectionName: { type: String, default: "" }, // FIX: changed from false to empty string
     },
     colors: [colorSchema],
     size: [String],
@@ -33,5 +36,6 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
 const Product = mongoose.model("Product", productSchema);
 export default Product;
