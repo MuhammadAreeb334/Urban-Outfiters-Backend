@@ -11,7 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-.env
 
 # Editor directories and files
 .vscode/*
@@ -23,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Temporary files
+temp/
+/temp
+
+# Uploaded files
+upload/
+/upload
+
+# System files
+.DS_Store
+Thumbs.db
+config.bat
